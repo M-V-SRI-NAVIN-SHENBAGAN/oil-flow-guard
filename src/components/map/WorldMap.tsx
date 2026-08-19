@@ -175,7 +175,7 @@ export function WorldMap({
       <g>
         {markers.map((m) => {
           const [x, y] = project(m.lon, m.lat);
-          const style = kindStyle[m.kind ?? "producer"] ?? kindStyle.producer!;
+          const style = kindStyle[m.kind ?? "producer"] ?? kindStyle['producer']!;
           const color = m.risk != null ? riskColor(m.risk) : style.color;
           const isChoke = m.kind === "chokepoint";
           return (
