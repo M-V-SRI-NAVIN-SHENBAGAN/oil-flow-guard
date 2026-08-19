@@ -237,7 +237,7 @@ function RiskMap() {
           </Panel>
 
           {(analyzing || analysis) && (
-            <AICallout title="AI RISK ANALYSIS" confidence={analysis ? 91 : undefined}>
+            <AICallout title="AI RISK ANALYSIS" {...(analysis ? { confidence: 91 } : {})}>
               {analyzing ? (
                 <span className="num flex items-center gap-2 text-[12.5px] text-muted-foreground">
                   <Loader2 className="h-4 w-4 animate-spin text-primary" /> Correlating 14,208 signals across 62 sources…
