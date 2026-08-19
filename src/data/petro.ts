@@ -365,12 +365,13 @@ export const BASE_KPIS: Kpi[] = [
 ];
 
 /** Escalated KPI set used by DEMO MODE. */
+const base = (i: number) => BASE_KPIS[i] as Kpi;
 export const DEMO_KPIS: Kpi[] = [
-  { ...BASE_KPIS[0], value: 93, delta: 22, tone: "critical" },
-  { ...BASE_KPIS[1], value: 91, delta: 23, tone: "critical" },
-  { ...BASE_KPIS[2], value: 8.7, delta: 4.5, tone: "critical" },
-  { ...BASE_KPIS[3], value: 128.6, delta: 37.2, tone: "critical" },
-  { ...BASE_KPIS[4], value: 31, delta: -12, tone: "warn" },
+  { ...base(0), value: 93, delta: 22, tone: "critical" },
+  { ...base(1), value: 91, delta: 23, tone: "critical" },
+  { ...base(2), value: 8.7, delta: 4.5, tone: "critical" },
+  { ...base(3), value: 128.6, delta: 37.2, tone: "critical" },
+  { ...base(4), value: 31, delta: -12, tone: "warn" },
 ];
 
 export const BRENT_HISTORY = [
@@ -618,7 +619,7 @@ export function sprCurves(scenario: SprScenario) {
       const drain = meta.rate * day * (1 + i * 0.12);
       row[r.id] = +Math.max(8, r.fill - drain).toFixed(1);
     });
-    row.recovery = +Math.min(100, 42 + day * meta.recovery).toFixed(1);
+    row['recovery'] = +Math.min(100, 42 + day * meta.recovery).toFixed(1);
     rows.push(row);
   }
   return rows;
