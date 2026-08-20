@@ -192,8 +192,14 @@ function Reserves() {
                 strokeWidth={2}
                 fill="url(#covFill)"
               />
-              <Line type="monotone" dataKey={() => 30} name="30-day threshold" stroke="var(--critical)" strokeDasharray="4 4" dot={false} />
+              <ReferenceLine
+                y={30}
+                stroke="var(--critical)"
+                strokeDasharray="4 4"
+                label={{ value: "30-day threshold", position: "insideTopLeft", fill: "var(--critical)", fontSize: 10 }}
+              />
             </AreaChart>
+
           </ResponsiveContainer>
         </Panel>
       </div>
