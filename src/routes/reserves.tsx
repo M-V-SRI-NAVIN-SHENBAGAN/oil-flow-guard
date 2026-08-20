@@ -202,13 +202,14 @@ function Reserves() {
           <strong className="text-foreground">{meta.note}</strong>
         </p>
         <p className="mt-2">
-          Aggregate coverage is projected at <strong className="text-cyan">{latest.recovery}%</strong> of the strategic threshold by Day 90. Maintain a
+          Aggregate coverage is projected at <strong className="text-cyan">{recovery}%</strong> of the strategic threshold by Day 90. Maintain a
           controlled release posture and begin pre-positioning refill cargoes once the deficit falls below 2.0 MMbbl/d.
         </p>
       </AICallout>
     </>
   );
 }
+
 
 function ReserveStat({ label, value, suffix }: { label: string; value: number; suffix: string }) {
   return (
