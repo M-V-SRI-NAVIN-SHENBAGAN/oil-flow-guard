@@ -187,12 +187,13 @@ function Simulator() {
                     <p className="num text-[10.5px] tracking-[0.22em] text-primary">{m.day} DAYS</p>
                     <p className="mt-2 text-[11px] text-muted-foreground">Supply gap</p>
                     <p className="num text-2xl font-semibold text-critical">
-                      <AnimatedNumber value={m.gap} decimals={1} suffix=" MMbbl/d" />
+                      <AnimatedNumber value={m.gap ?? 0} decimals={1} suffix=" MMbbl/d" />
                     </p>
                     <p className="mt-2 text-[11px] text-muted-foreground">Brent price</p>
                     <p className="num text-xl font-semibold text-warn">
-                      <AnimatedNumber value={m.price} decimals={0} prefix="$" suffix="/bbl" />
+                      <AnimatedNumber value={m.price ?? 0} decimals={0} prefix="$" suffix="/bbl" />
                     </p>
+
                   </div>
                 ))}
               </div>
