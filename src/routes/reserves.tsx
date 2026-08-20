@@ -44,6 +44,7 @@ function Reserves() {
   const meta = SPR_SCENARIO_META[scenario];
   const data = sprCurves(scenario);
   const latest = data[data.length - 1]!;
+  const recovery = latest['recovery'] ?? 0;
   const totalCoverage = RESERVES.reduce((acc, r) => acc + r.coverageDays, 0);
   const totalCapacity = RESERVES.reduce((acc, r) => acc + r.capacityMMT, 0);
   const avgFill = RESERVES.reduce((acc, r) => acc + r.fill, 0) / RESERVES.length;
@@ -60,8 +61,9 @@ function Reserves() {
         <ReserveStat label="Total Capacity" value={totalCapacity} suffix=" MMT" />
         <ReserveStat label="Average Fill" value={avgFill} suffix="%" />
         <ReserveStat label="Aggregate Coverage" value={totalCoverage} suffix=" days" />
-        <ReserveStat label="90-Day Recovery" value={latest.recovery ?? 0} suffix="%" />
+        <ReserveStat label="90-Day Recovery" value={recovery} suffix="%" />
       </div>
+
 
       <div className="grid gap-5 xl:grid-cols-[1fr_380px]">
         <Panel title="Reserve Sites" subtitle="Live-style SPR inventory dashboard">
