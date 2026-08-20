@@ -7,12 +7,14 @@ import {
   Legend,
   Line,
   LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { AlertTriangle, Droplets, ShieldCheck, TrendingDown } from "lucide-react";
+
 import { RESERVES, SPR_SCENARIO_META, sprCurves, type SprScenario } from "@/data/petro";
 import { AICallout, AnimatedNumber, PageHeader, Panel, ScoreBar } from "@/components/kit";
 import { chartTooltip } from "@/components/chartTheme";
