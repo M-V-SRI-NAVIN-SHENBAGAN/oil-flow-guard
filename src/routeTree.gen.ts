@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgentsRouteImport } from './routes/agents'
+import { Route as IntelRouteImport } from './routes/intel'
+import { Route as ReservesRouteImport } from './routes/reserves'
 import { Route as RiskMapRouteImport } from './routes/risk-map'
+import { Route as RouteOptimizerRouteImport } from './routes/route-optimizer'
 import { Route as SimulatorRouteImport } from './routes/simulator'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +22,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelRoute = IntelRouteImport.update({
+  id: '/intel',
+  path: '/intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservesRoute = ReservesRouteImport.update({
+  id: '/reserves',
+  path: '/reserves',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskMapRoute = RiskMapRouteImport.update({
   id: '/risk-map',
   path: '/risk-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RouteOptimizerRoute = RouteOptimizerRouteImport.update({
+  id: '/route-optimizer',
+  path: '/route-optimizer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SimulatorRoute = SimulatorRouteImport.update({
@@ -31,31 +55,69 @@ const SimulatorRoute = SimulatorRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/intel': typeof IntelRoute
+  '/reserves': typeof ReservesRoute
   '/risk-map': typeof RiskMapRoute
+  '/route-optimizer': typeof RouteOptimizerRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/intel': typeof IntelRoute
+  '/reserves': typeof ReservesRoute
   '/risk-map': typeof RiskMapRoute
+  '/route-optimizer': typeof RouteOptimizerRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/intel': typeof IntelRoute
+  '/reserves': typeof ReservesRoute
   '/risk-map': typeof RiskMapRoute
+  '/route-optimizer': typeof RouteOptimizerRoute
   '/simulator': typeof SimulatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/risk-map' | '/simulator'
+  fullPaths:
+    | '/'
+    | '/agents'
+    | '/intel'
+    | '/reserves'
+    | '/risk-map'
+    | '/route-optimizer'
+    | '/simulator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/risk-map' | '/simulator'
-  id: '__root__' | '/' | '/risk-map' | '/simulator'
+  to:
+    | '/'
+    | '/agents'
+    | '/intel'
+    | '/reserves'
+    | '/risk-map'
+    | '/route-optimizer'
+    | '/simulator'
+  id:
+    | '__root__'
+    | '/'
+    | '/agents'
+    | '/intel'
+    | '/reserves'
+    | '/risk-map'
+    | '/route-optimizer'
+    | '/simulator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentsRoute: typeof AgentsRoute
+  IntelRoute: typeof IntelRoute
+  ReservesRoute: typeof ReservesRoute
   RiskMapRoute: typeof RiskMapRoute
+  RouteOptimizerRoute: typeof RouteOptimizerRoute
   SimulatorRoute: typeof SimulatorRoute
 }
 
@@ -68,11 +130,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intel': {
+      id: '/intel'
+      path: '/intel'
+      fullPath: '/intel'
+      preLoaderRoute: typeof IntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reserves': {
+      id: '/reserves'
+      path: '/reserves'
+      fullPath: '/reserves'
+      preLoaderRoute: typeof ReservesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk-map': {
       id: '/risk-map'
       path: '/risk-map'
       fullPath: '/risk-map'
       preLoaderRoute: typeof RiskMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/route-optimizer': {
+      id: '/route-optimizer'
+      path: '/route-optimizer'
+      fullPath: '/route-optimizer'
+      preLoaderRoute: typeof RouteOptimizerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/simulator': {
@@ -87,7 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentsRoute: AgentsRoute,
+  IntelRoute: IntelRoute,
+  ReservesRoute: ReservesRoute,
   RiskMapRoute: RiskMapRoute,
+  RouteOptimizerRoute: RouteOptimizerRoute,
   SimulatorRoute: SimulatorRoute,
 }
 export const routeTree = rootRouteImport
